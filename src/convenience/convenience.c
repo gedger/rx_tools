@@ -273,8 +273,16 @@ int verbose_auto_gain(SoapySDRDevice *dev)
 			fprintf(stderr, "WARNING: Failed to set AMP tuner gain.\n");
 		}
 
+	} else if (strcmp(driver, "SDRPlay") == 0) {
+		r = (int)SoapySDRDevice_setGainMode(dev, SOAPY_SDR_RX, 0, 1);
+		if (r != 0) {
+			fprintf(stderr, "WARNING: Failed to set auto gain.\n");
+		} else {
+			fprintf(stderr, "Tuner gain set to auto\n");
+		}
 	}
 	// otherwise leave unset, hopefully the driver has good defaults
+	//fprintf(stderr, "Driver name is :%s\n", driver);
 
 	return r;
 }

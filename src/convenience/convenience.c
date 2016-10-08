@@ -274,6 +274,7 @@ int verbose_auto_gain(SoapySDRDevice *dev)
 		}
 
 	} else if (strcmp(driver, "SDRPlay") == 0) {
+		// SDRPlay has 2 gains TUNER, LNAT but auto gain is for both
 		r = (int)SoapySDRDevice_setGainMode(dev, SOAPY_SDR_RX, 0, 1);
 		if (r != 0) {
 			fprintf(stderr, "WARNING: Failed to set auto gain.\n");
@@ -313,6 +314,9 @@ int verbose_gain_str_set(SoapySDRDevice *dev, char *gain_str)
 			r = SoapySDRDevice_setGainElement(dev, SOAPY_SDR_RX, 0, name, value);
 			if (r != 0) {
 				fprintf(stderr, "WARNING: setGainElement(%s, %f) failed: %d\n", name, value, r);
+			}
+			else {
+				fprintf(stderr, "Gain for %s set to %f", name, value);
 			}
 		}
 	} else {

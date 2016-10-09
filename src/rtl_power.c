@@ -73,6 +73,8 @@
 
 #define MAXIMUM_RATE			2800000
 #define MINIMUM_RATE			1000000
+#define MAXIMUM_RATE			2048000
+#define MINIMUM_RATE			1536000
 
 static volatile int do_exit = 0;
 static SoapySDRDevice *dev = NULL;

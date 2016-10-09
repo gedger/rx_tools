@@ -316,7 +316,7 @@ int verbose_gain_str_set(SoapySDRDevice *dev, char *gain_str)
 				fprintf(stderr, "WARNING: setGainElement(%s, %f) failed: %d\n", name, value, r);
 			}
 			else {
-				fprintf(stderr, "Gain for %s set to %f", name, value);
+				fprintf(stderr, "Gain for %s set to %f dB\n", name, value);
 			}
 		}
 	} else {

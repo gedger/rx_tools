@@ -1005,7 +1005,8 @@ int main(int argc, char **argv)
 	verbose_reset_buffer(dev);
 
 	/* actually do stuff */
-	SoapySDRDevice_setSampleRate(dev, SOAPY_SDR_RX, 0, (double)tunes[0].rate);
+	verbose_set_sample_rate(dev, tunes[0].rate);
+	//SoapySDRDevice_setSampleRate(dev, SOAPY_SDR_RX, 0, (double)tunes[0].rate);
 	sine_table(tunes[0].bin_e);
 	next_tick = time(NULL) + interval;
 	if (exit_time) {
